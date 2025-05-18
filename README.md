@@ -1,2 +1,2 @@
 # Sparnatural-Elections-Graph
-My project for theSenatic Web course at FMI
+My project for the Semantic Web course at FMI
