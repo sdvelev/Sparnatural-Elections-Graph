@@ -16,7 +16,9 @@
 
     <!-- Sparnatural CSS -->
     <link rel="stylesheet" href="sparnatural.css">
-    
+
+    <link href="themes/sparnatural-theme-sea.css" rel="stylesheet" />
+
     <!-- This page custom CSS -->
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -54,20 +56,34 @@
 
         <p>Queries are sent to <a href="#" id="displayEndpoint">...</a></p>
         
-        <!-- uncomment to enable links to load sample queries
+<!--        <p>-->
+<!--          Load example queries :-->
+<!--          <a href="#" onclick="document.querySelector('spar-natural').loadQuery(window['example_1']);return false;">Списък на общините в България</a>-->
+<!--          |-->
+<!--          <a href="#" onclick="document.querySelector('spar-natural').loadQuery(window['example_2']);return false;">example 2</a>-->
+<!--        </p>-->
+
         <p>
-          Load example queries :
-          <a href="#" onclick="document.querySelector('spar-natural').loadQuery(window['example_1']);return false;">example 1</a>
-          |
-          <a href="#" onclick="document.querySelector('spar-natural').loadQuery(window['example_2']);return false;">example 2</a>
+          Load example query:
+          <select id="exampleSelect" onchange="loadSelectedExample()">
+            <option value="">-- Select an example --</option>
+            <option value="example_1">Списък на общините в България</option>
+            <option value="example_2">Списък на всички партии, заедно с техния цвят</option>
+            <option value="example_3">Списък на всички секции в район "Лозенец" на парламентарните избори на 02.04.2023 г.</option>
+            <option value="example_4">Листа на партия в 24 МИР София за парламентарните избори през 2022 г.</option>
+            <option value="example_5">Гласуване в секциите на територията на гр. Нова Загора на парламентарните избори на 02.04.2023 г.</option>
+            <option value="example_6">Всички населени места в 21 МИР Сливен, в които е имало открита секция на парламентарните избори през 2014 г.</option>
+            <option value="example_7">Листа на партия в 23 МИР София за парламентарните избори през 2023 г.</option>
+            <option value="example_8">Секции на територията на община Варна, в които е имало балотаж за кмет на община на местните избори през 2015 г.</option>
+            <option value="example_9">Статистика за общия брой гласове и броя валидни гласове в секциите в с. Кортен през годините</option>
+          </select>
         </p>
-        -->
 
         <!-- The sparnatural web component with config attributes. -->
         <!-- See http://docs.sparnatural.eu/Javascript-integration.html#html-attributes-reference -->
         <spar-natural 
-            src="config.ttl"
-            endpoint="https://proxy.sparnatural.eu/sparql-proxy/sparql?endpoint=https://elections.ontotext.com/graphdb/"
+            src="myconfig.ttl"
+            endpoint="https://proxy.sparnatural.eu/sparql-proxy/sparql?endpoint=https://elections.ontotext.com/graphdb/repositories/elections"
             lang="en"
             defaultLang="en"
             distinct="true"
@@ -110,6 +126,22 @@
     <script src="example-queries.js"></script>
     
     <!-- This page custom JS -->
-    <script src="main.js"></script>    
+    <script src="main.js"></script>
+
+    <script>
+      function loadSelectedExample() {
+        const selectedValue = document.getElementById('exampleSelect').value;
+        if (selectedValue && window[selectedValue]) {
+          document.querySelector('spar-natural').loadQuery(window[selectedValue]);
+        }
+      }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Reset the dropdown to default
+        document.getElementById('exampleSelect').value = '';
+      });
+    </script>
   </body>
 </html>
