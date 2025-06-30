@@ -1,0 +1,692 @@
+@prefix schema: <http://schema.org/> .
+@prefix volipi: <http://data.sparna.fr/ontologies/volipi#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skosthes: <http://purl.org/iso25964/skos-thes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix euvoc: <http://publications.europa.eu/ontology/euvoc#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix xls2rdf: <https://xls2rdf.sparna.fr/vocabulary#> .
+@prefix this: <https://data.example.com/ontologies/sparnatural-config/> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix my: <https://elections.ontotext.com/resource/entity/> .
+@prefix core: <http://data.sparna.fr/ontologies/sparnatural-config-core#> .
+@prefix datasources: <http://data.sparna.fr/ontologies/sparnatural-config-datasources#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix myc: <https://elections.ontotext.com/resource/prop/cube/> .
+@prefix myd: <https://elections.ontotext.com/resource/prop/direct/> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+
+<https://data.mydomain.com/ontologies/sparnatural-config> a owl:Ontology;
+  dct:source <https://docs.google.com/spreadsheets/d/1lduSARo-zyL8qxObwPVD4Z2m8iKQpye-> .
+
+my:Section a sh:NodeShape;
+  sh:order "1"^^xsd:integer;
+  volipi:iconName "fa-solid fa-map";
+  sh:targetClass my:Section;
+  rdfs:label "Section"@en;
+  sh:description "Represents a voting section or precinct where voting takes place"@en;
+  sh:property rdfs:label, myd:main_election, myd:election, wgs:hasGeometry, myd:date,
+    myd:isMobile, myd:number, myd:place, myd:municipality_m, myd:votingPlace_loc, myd:countMachines,
+    myd:isShipOrHospital, myd:streetAddress, myd:hasResult, myd:geo_match, myd:neighborhood,
+    myd:district, myd:votingPlace, myd:matched_section .
+
+my:Election a sh:NodeShape;
+  sh:order "2"^^xsd:integer;
+  volipi:iconName "fa-solid fa-landmark";
+  sh:targetClass my:Election;
+  rdfs:label "Election"@en;
+  sh:description "Denotes a specific electoral event, such as a parliamentary or local election."@en;
+  sh:property rdfs:label, myd:date, myd:type, myd:wikidata_entity, myd:jurisdiction,
+    myd:main_election, myd:partOf .
+
+my:Candidate a sh:NodeShape;
+  sh:order "3"^^xsd:integer;
+  volipi:iconName "fa-solid fa-user-tie";
+  sh:targetClass my:Candidate;
+  rdfs:label "Candidate"@en;
+  sh:description "Represents an individual who is running for election."@en;
+  sh:property rdfs:label, myd:candidacy, myd:represents, myd:number, myd:party_number .
+
+my:ElectionParty a sh:NodeShape;
+  sh:order "4"^^xsd:integer;
+  volipi:iconName "fa-solid fa-people-group";
+  sh:targetClass my:ElectionParty;
+  rdfs:label "ElectionParty"@en;
+  sh:description "Represents a political party participating in a particular election."@en;
+  sh:property rdfs:label, myd:candidacy, myd:party .
+
+my:Voting a sh:NodeShape;
+  sh:order "5"^^xsd:integer;
+  volipi:iconName "fa-solid fa-check-square";
+  sh:targetClass my:Voting;
+  rdfs:label "Voting"@en;
+  sh:description "Captures the act of casting a vote in an election."@en;
+  sh:property rdfs:label, myd:main_election, myd:election, myd:date, myd:link_html,
+    myd:link_pdf, myd:received_ballots, myd:round, myd:voters_additional_count, myd:voters_count,
+    myd:voters_voted_count, myd:votes_invalid_count, myd:votes_valid_count, myd:section,
+    myd:vote, myd:preference_vote .
+
+my:Place a sh:NodeShape;
+  sh:order "6"^^xsd:integer;
+  volipi:iconName "fa-solid fa-location-dot";
+  sh:targetClass my:Place;
+  rdfs:label "Place"@en;
+  sh:description "Denotes a geographical location, such as a city or town."@en;
+  sh:property rdfs:label, myd:municipality, wgs:hasGeometry_p, myd:wikidata_entity .
+
+my:VotingRound a sh:NodeShape;
+  sh:order "7"^^xsd:integer;
+  volipi:iconName "fa-solid fa-circle-nodes";
+  sh:targetClass my:VotingRound;
+  rdfs:label "VotingRound"@en;
+  sh:description "Captures the voting data specific to a particular round of an election."@en;
+  sh:property rdfs:label, myd:main_election, myd:partOf, myd:place, myd:date .
+
+my:Party a sh:NodeShape;
+  sh:order "8"^^xsd:integer;
+  volipi:iconName "fa-solid fa-flag";
+  sh:targetClass my:Party;
+  rdfs:label "Party"@en;
+  sh:description "Represents a political party."@en;
+  sh:property rdfs:label, myd:color .
+
+my:Municipality a sh:NodeShape;
+  sh:order "9"^^xsd:integer;
+  volipi:iconName "fa-solid fa-city";
+  sh:targetClass my:Municipality;
+  rdfs:label "Municipality"@en;
+  sh:description "Denotes a local administrative division, such as a city or town."@en;
+  sh:property rdfs:label, wgs:hasGeometry_m, myd:wikidata_entity, myd:mir, myd:province .
+
+my:VotingPlace a sh:NodeShape;
+  sh:order "10"^^xsd:integer;
+  volipi:iconName "fa-solid fa-house-flag";
+  sh:targetClass my:VotingPlace;
+  rdfs:label "VotingPlace"@en;
+  sh:description "Represents the physical location where voting occurs."@en;
+  sh:property rdfs:label, myd:place, wgs:hasGeometry_vo, myd:address .
+
+my:LocalParty a sh:NodeShape;
+  sh:order "11"^^xsd:integer;
+  volipi:iconName "fa-solid fa-person";
+  sh:targetClass my:LocalParty;
+  rdfs:label "LocalParty"@en;
+  sh:description "Represents a political party operating at a local level."@en;
+  sh:property rdfs:label, myd:candidacy, myd:party, myd:number, myd:type .
+
+my:MIR a sh:NodeShape;
+  sh:order "12"^^xsd:integer;
+  volipi:iconName "fa-solid fa-diagram-project";
+  sh:targetClass my:MIR;
+  rdfs:label "MIR"@en;
+  sh:description "Denotes a multi-member electoral region."@en;
+  sh:property rdfs:label, wgs:hasGeometry_mi, myd:number, myd:wdid .
+
+my:Province a sh:NodeShape;
+  sh:order "13"^^xsd:integer;
+  volipi:iconName "fa-solid fa-map-location";
+  sh:targetClass my:Province;
+  rdfs:label "Province"@en;
+  sh:description "Represents a provincial administrative division."@en;
+  sh:property rdfs:label .
+
+my:MatchedSection a sh:NodeShape;
+  sh:order "14"^^xsd:integer;
+  volipi:iconName "fa-solid fa-link";
+  sh:targetClass my:MatchedSection;
+  rdfs:label "MatchedSection"@en;
+  sh:description "Denotes a section that has been matched or aligned with another entity."@en;
+  sh:property rdfs:label, myd:section, myd:number .
+
+my:Neighborhood a sh:NodeShape;
+  sh:order "15"^^xsd:integer;
+  volipi:iconName "fa-solid fa-house-chimney";
+  sh:targetClass my:Neighborhood;
+  rdfs:label "Neighborhood"@en;
+  sh:description "Represents a smaller administrative or residential area within a municipality."@en;
+  sh:property rdfs:label, myd:district_str, myd:number .
+
+my:District a sh:NodeShape;
+  sh:order "16"^^xsd:integer;
+  volipi:iconName "fa-solid fa-border-all";
+  sh:targetClass my:District;
+  rdfs:label "District"@en;
+  sh:description "Denotes an electoral district or constituency."@en;
+  sh:property rdfs:label, myd:mir, myd:municipality, myd:number, myd:wikidata_entity .
+
+rdfs:label sh:path rdfs:label;
+  sh:order "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+    "15", "16";
+  sh:name "label"@en;
+  sh:description "Specifies the label for the given section."@en, "Specifies the label for the given election."@en,
+    "Specifies the label for the given candidate."@en, "Specifies the label for the given election party."@en,
+    "Specifies the label for the given voting."@en, "Specifies the label for the given place."@en,
+    "Specifies the label for the given voting round."@en, "Specifies the label for the given party."@en,
+    "Specifies the label for the given municipality."@en, "Specifies the label for the given voting place."@en,
+    "Specifies the label for the given local party."@en, "Specifies the label for the given MIR."@en,
+    "Specifies the label for the given province."@en, "Specifies the label for the given neighborhood."@en,
+    "Specifies the label for the given district."@en, "Specifies the label for the gicen matched section."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  dash:searchWidget core:SearchProperty;
+  datasources:datasource datasources:list_URI_or_literal_count_custom .
+
+myd:date sh:path myd:date;
+  sh:order "17", "34", "62", "78";
+  sh:name "date"@en;
+  sh:description "Specifies the date for the given election."@en, "Specifies the date of the given section."@en,
+    "Specifies the date of the given voting."@en, "Specifies the date for the given voting round."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:date;
+  dash:searchWidget core:TimeProperty-Date .
+
+myd:type sh:path myd:type;
+  sh:order "18", "57";
+  sh:name "type"@en;
+  sh:description "Specifies the type of the given election."@en, "Specifies the type for the given local party."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha .
+
+myd:wikidata_entity sh:path myd:wikidata_entity;
+  sh:order "19", "61", "80", "92";
+  sh:name "wikidata_entity"@en;
+  sh:description "Specifies the wikidata entity for the given election."@en, "Specifies the wikidata entity for the given place."@en,
+    "Specifies the wikidata entity for the given municipality."@en, "Specifies the wikidata entity for the given district."@en;
+  sh:nodeKind sh:IRI;
+  dash:searchWidget core:ListProperty .
+
+myd:jurisdiction sh:path myd:jurisdiction;
+  sh:order "20", "21";
+  sh:name "jurisdiction"@en;
+  sh:description "Specifies the municipality of the given election."@en, "Specifies the MIR of the given election."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Municipality, my:MIR;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:main_election sh:path myd:main_election;
+  sh:order "22", "23", "24", "25", "36", "66";
+  sh:name "main_election"@en;
+  sh:description "Specifies the main election for the given section."@en, "Specifies the main election for the given election."@en,
+    "Specifies the main election for the given voting."@en, "Specifies the main election for the given voting round."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Election;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha .
+
+myd:election sh:path myd:election;
+  sh:order "26", "27", "35", "63";
+  sh:name "election"@en;
+  sh:description "Specifies the election for the given voting."@en, "Specifies the election for the given section."@en,
+    "Specifies the voting round for the given voting."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Election, my:VotingRound;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom, datasources:list_rdfslabel_alpha .
+
+myd:candidacy sh:path myd:candidacy;
+  sh:order "28", "29", "30", "47", "55";
+  sh:name "candidacy"@en;
+  sh:description "Specifies the election for the given candidate."@en, "Specifies the election for the given election party."@en,
+    "Specifies the election for the given local party."@en, "Specifies the voting round for the given candidate."@en,
+    "Specifies the voting round for the given local party."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Election, my:VotingRound;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom, datasources:list_rdfslabel_alpha .
+
+myd:partOf sh:path myd:partOf;
+  sh:order "31", "32";
+  sh:name "partOf"@en;
+  sh:description "Specifies the part of the given election."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Election;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+wgs:hasGeometry sh:path _:307697226f7a4edbb27587ce08a349cd1793;
+  sh:order "33";
+  sh:name "hasGeometry"@en;
+  sh:description "Specifies the location of the place of given section."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype geo:wktLiteral;
+  dash:searchWidget core:MapProperty .
+
+_:307697226f7a4edbb27587ce08a349cd1793 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1794 .
+
+_:307697226f7a4edbb27587ce08a349cd1794 rdf:first wgs:asWKT;
+  rdf:rest rdf:nil .
+
+myd:isMobile sh:path myd:isMobile;
+  sh:order "37";
+  sh:name "isMobile"@en;
+  sh:description "Specifies whether the given section is mobile."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:boolean;
+  dash:searchWidget core:BooleanProperty .
+
+myd:number sh:path myd:number;
+  sh:order "38", "50", "56", "84", "87", "91", "99";
+  sh:name "number"@en;
+  sh:description "Specifies the number of the given section"@en, "Specifies the number for the given candidate."@en,
+    "Specifies the number for the given local party."@en, "Specifies the number of the given MIR."@en,
+    "Specifies the number of the given neighborhood."@en, "Specifies the number of the given district."@en,
+    "Specfies the number of the matched section."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string, xsd:integer;
+  dash:searchWidget core:ListProperty, core:NumberProperty .
+
+myd:place sh:path myd:place;
+  sh:order "39", "58", "94";
+  sh:name "place"@en;
+  sh:description "Specifies the place of the given section."@en, "Specifies the place for the given voting round."@en,
+    "Specifies the place for the given voting place."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Place;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha, datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:municipality_m sh:path _:307697226f7a4edbb27587ce08a349cd1795;
+  sh:order "40";
+  sh:name "municipality"@en;
+  sh:description "Specifies the municipality of the given section."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Municipality;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+_:307697226f7a4edbb27587ce08a349cd1795 rdf:first myd:place;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1796 .
+
+_:307697226f7a4edbb27587ce08a349cd1796 rdf:first myd:municipality;
+  rdf:rest rdf:nil .
+
+myd:votingPlace_loc sh:path _:307697226f7a4edbb27587ce08a349cd1797;
+  sh:order "41";
+  sh:name "votingPlace"@en;
+  sh:description "Specifies the location of the given section."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype geo:wktLiteral;
+  dash:searchWidget core:MapProperty .
+
+_:307697226f7a4edbb27587ce08a349cd1797 rdf:first myd:votingPlace;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1798 .
+
+_:307697226f7a4edbb27587ce08a349cd1798 rdf:first _:307697226f7a4edbb27587ce08a349cd1799;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1802 .
+
+_:307697226f7a4edbb27587ce08a349cd1799 sh:alternativePath _:307697226f7a4edbb27587ce08a349cd1800 .
+
+_:307697226f7a4edbb27587ce08a349cd1800 rdf:first geo:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1801 .
+
+_:307697226f7a4edbb27587ce08a349cd1801 rdf:first wgs:hasGeometry;
+  rdf:rest rdf:nil .
+
+_:307697226f7a4edbb27587ce08a349cd1802 rdf:first _:307697226f7a4edbb27587ce08a349cd1803;
+  rdf:rest rdf:nil .
+
+_:307697226f7a4edbb27587ce08a349cd1803 sh:alternativePath _:307697226f7a4edbb27587ce08a349cd1804 .
+
+_:307697226f7a4edbb27587ce08a349cd1804 rdf:first geo:asWKT;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1805 .
+
+_:307697226f7a4edbb27587ce08a349cd1805 rdf:first wgs:asWKT;
+  rdf:rest rdf:nil .
+
+myd:countMachines sh:path myd:countMachines;
+  sh:order "42";
+  sh:name "countMachines"@en;
+  sh:description "Specifies the count of the machines in the given section."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:isShipOrHospital sh:path myd:isShipOrHospital;
+  sh:order "43";
+  sh:name "isShipOrHospital"@en;
+  sh:description "Specifies whether it is ship or hospital section."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:boolean;
+  dash:searchWidget core:BooleanProperty .
+
+myd:streetAddress sh:path myd:streetAddress;
+  sh:order "44";
+  sh:name "streetAddress"@en;
+  sh:description "Specifies the street address of the given section."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  dash:searchWidget core:ListProperty .
+
+myd:hasResult sh:path _:307697226f7a4edbb27587ce08a349cd1806;
+  sh:order "45";
+  sh:name "hasResult"@en;
+  sh:description "Specifies the vote for the given section."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Voting;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+_:307697226f7a4edbb27587ce08a349cd1806 sh:inversePath myd:section .
+
+myd:geo_match sh:path myd:geo_match;
+  sh:order "46";
+  sh:name "geo_match"@en;
+  sh:description "Specifies sections which are equivalent."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Section;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha .
+
+myd:represents sh:path myd:represents;
+  sh:order "48", "49";
+  sh:name "represents"@en;
+  sh:description "Specifies the election party for the given candidate."@en, "Specifies the local party for the given candidate."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:ElectionParty, my:LocalParty;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:party_number sh:path myd:party_number;
+  sh:order "51";
+  sh:name "party_number"@en;
+  sh:description "Specifies the party number for the given candidate."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:party sh:path myd:party;
+  sh:order "52", "53";
+  sh:name "party"@en;
+  sh:description "Specifies the party for the given election party."@en, "Specifies the election party for the given local party."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Party, my:ElectionParty;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:color sh:path myd:color;
+  sh:order "54";
+  sh:name "color"@en;
+  sh:description "Specifies the color for the given party."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha .
+
+myd:municipality sh:path myd:municipality;
+  sh:order "59", "90";
+  sh:name "municipality"@en;
+  sh:description "Specifies the municipality for the given place."@en, "Specifies the municipality of the given district."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Municipality;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+wgs:hasGeometry_p sh:path _:307697226f7a4edbb27587ce08a349cd1807;
+  sh:order "60";
+  sh:name "hasGeometry"@en;
+  sh:description "Specifies the location of the given place."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype geo:wktLiteral;
+  dash:searchWidget core:MapProperty .
+
+_:307697226f7a4edbb27587ce08a349cd1807 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1808 .
+
+_:307697226f7a4edbb27587ce08a349cd1808 rdf:first wgs:asWKT;
+  rdf:rest rdf:nil .
+
+myd:link_html sh:path myd:link_html;
+  sh:order "64";
+  sh:name "link_html"@en;
+  sh:description "Specifies the result protocol in HTML for the given voting."@en;
+  sh:nodeKind sh:IRI;
+  dash:searchWidget core:ListProperty .
+
+myd:link_pdf sh:path myd:link_pdf;
+  sh:order "65";
+  sh:name "link_pdf"@en;
+  sh:description "Specifies the result protocol in PDF for the given voting."@en;
+  sh:nodeKind sh:IRI;
+  dash:searchWidget core:ListProperty .
+
+myd:received_ballots sh:path myd:received_ballots;
+  sh:order "67";
+  sh:name "received_ballots"@en;
+  sh:description "Specifies the received ballots for the given voting."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:round sh:path myd:round;
+  sh:order "68";
+  sh:name "round"@en;
+  sh:description "Specifies the round for the given voting."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:voters_additional_count sh:path myd:voters_additional_count;
+  sh:order "69";
+  sh:name "voters_additional_count"@en;
+  sh:description "Specifies the number of additional voters for the given voting."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:voters_count sh:path myd:voters_count;
+  sh:order "70";
+  sh:name "voters_count"@en;
+  sh:description "Specifies the number of voters for the given voting."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:voters_voted_count sh:path myd:voters_voted_count;
+  sh:order "71";
+  sh:name "voters_voted_count"@en;
+  sh:description "Specifies the number of voters who voted for the given voting."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:votes_invalid_count sh:path myd:votes_invalid_count;
+  sh:order "72";
+  sh:name "votes_invalid_count"@en;
+  sh:description "Specifies the number of invalid votes for the given voting."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:votes_valid_count sh:path myd:votes_valid_count;
+  sh:order "73";
+  sh:name "votes_valid_count"@en;
+  sh:description "Specifies the number of valid votes for the given voting."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:integer;
+  dash:searchWidget core:NumberProperty .
+
+myd:section sh:path myd:section;
+  sh:order "74", "98";
+  sh:name "section"@en;
+  sh:description "Specifies the section for the given voting."@en, "Specifies the sections of the matched section."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Section;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:vote sh:path myd:vote;
+  sh:order "75", "76";
+  sh:name "vote"@en;
+  sh:description "Specifies a possible election party for the given voting."@en, "Specifies a possible local party for the given election."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:ElectionParty, my:LocalParty;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:preference_vote sh:path myd:preference_vote;
+  sh:order "77";
+  sh:name "preference_vote"@en;
+  sh:description "Specifies a possible preference candidate for the given voting."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Candidate;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+wgs:hasGeometry_m sh:path _:307697226f7a4edbb27587ce08a349cd1809;
+  sh:order "79";
+  sh:name "hasGeometry"@en;
+  sh:description "Specifies the location of the given municipality."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype geo:wktLiteral;
+  dash:searchWidget core:MapProperty .
+
+_:307697226f7a4edbb27587ce08a349cd1809 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1810 .
+
+_:307697226f7a4edbb27587ce08a349cd1810 rdf:first wgs:asWKT;
+  rdf:rest rdf:nil .
+
+myd:mir sh:path myd:mir;
+  sh:order "81", "89";
+  sh:name "mir"@en;
+  sh:description "Specifies the MIR of the given municipality"@en, "Specifies the MIR of the given district."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:MIR;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:province sh:path myd:province;
+  sh:order "82";
+  sh:name "province"@en;
+  sh:description "Specifies the province of the given municipality."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Province;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+wgs:hasGeometry_mi sh:path _:307697226f7a4edbb27587ce08a349cd1811;
+  sh:order "83";
+  sh:name "hasGeometry"@en;
+  sh:description "Specifies the location of the given MIR."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype geo:wktLiteral;
+  dash:searchWidget core:MapProperty .
+
+_:307697226f7a4edbb27587ce08a349cd1811 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1812 .
+
+_:307697226f7a4edbb27587ce08a349cd1812 rdf:first wgs:asWKT;
+  rdf:rest rdf:nil .
+
+myd:wdid sh:path myd:wdid;
+  sh:order "85";
+  sh:name "wdid"@en;
+  sh:description "Specifies the wikidata entity for the given MIR."@en;
+  sh:nodeKind sh:IRI;
+  dash:searchWidget core:ListProperty .
+
+myd:district_str sh:path myd:district_str;
+  sh:order "86";
+  sh:name "district_str"@en;
+  sh:description "Specifies the district of the given neighborhood."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  dash:searchWidget core:ListProperty .
+
+myd:neighborhood sh:path myd:neighborhood;
+  sh:order "88";
+  sh:name "neighborhood"@en;
+  sh:description "Specifies the neighborhood for the given section."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:Neighborhood;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:district sh:path myd:district;
+  sh:order "93";
+  sh:name "district"@en;
+  sh:description "Specifies the district for the given section."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:District;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+wgs:hasGeometry_vo sh:path _:307697226f7a4edbb27587ce08a349cd1813;
+  sh:order "95";
+  sh:name "hasGeometry"@en;
+  sh:description "Specifies the location of the given voting place."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype geo:wktLiteral;
+  dash:searchWidget core:MapProperty .
+
+_:307697226f7a4edbb27587ce08a349cd1813 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1814 .
+
+_:307697226f7a4edbb27587ce08a349cd1814 rdf:first wgs:asWKT;
+  rdf:rest rdf:nil .
+
+myd:address sh:path myd:address;
+  sh:order "96";
+  sh:name "address"@en;
+  sh:description "Specifies the address of the given voting place."@en;
+  sh:nodeKind sh:Literal;
+  sh:datatype xsd:string;
+  dash:searchWidget core:ListProperty .
+
+myd:votingPlace sh:path myd:votingPlace;
+  sh:order "97";
+  sh:name "votingPlace"@en;
+  sh:description "Specifies the voting place for the given section."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:VotingPlace;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+myd:matched_section sh:path myd:matched_section;
+  sh:order "100";
+  sh:name "matched_section"@en;
+  sh:description "Specifies the matched section for the given section."@en;
+  sh:nodeKind sh:IRI;
+  sh:class my:MatchedSection;
+  dash:searchWidget core:ListProperty;
+  datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
+
+datasources:list_rdfslabel_alpha_with_count_custom a datasources:SparqlDatasource;
+  datasources:queryString "SELECT ?uri ?count (CONCAT(STR(?theLabel), ' (', STR(?count), ')') AS ?label) (STR(?theLabel) AS ?itemLabel) WHERE { { SELECT ?uri ?count ?theLabel WHERE { { SELECT DISTINCT ?uri (COUNT(?domain) AS ?count) WHERE { ?domain $type $domain . ?domain $property ?uri . FILTER(isIRI(?uri)) } GROUP BY ?uri } ?uri $labelPath ?theLabel . FILTER(lang(?theLabel) = \"\" || lang(?theLabel) = $lang) } ORDER BY UCASE(?theLabel) } } ORDER BY UCASE(STR(?label))" .
+
+datasources:list_URI_or_literal_count_custom a datasources:SparqlDatasource;
+  datasources:queryString "SELECT DISTINCT ?uri ?label WHERE { ?domain $type $domain . ?domain $property ?uri . ?uri $type $range . ?uri $labelPath ?label . FILTER(isIRI(?uri)) FILTER(lang(?label) = '' || lang(?label) = $lang) FILTER(CONTAINS(LCASE(STR(?label)), LCASE(\"$key\"))) BIND( IF( STRSTARTS(LCASE(STR(?label)), LCASE(\"$key\")),0,9 ) AS ?starts ) } ORDER BY UCASE(STR(?label))" .
+
+this:query_search_label_contains_langfr a datasources:SPARQLQuery;
+  datasources:queryString """SELECT DISTINCT ?uri ?label
+WHERE {
+ ?domain a $domain .
+ ?domain $property ?uri .
+ ?uri a $range .
+ ?uri $labelPath ?label .
+ FILTER(isIRI(?uri))
+ FILTER(CONTAINS(LCASE(STR(?label)), LCASE(\"$key\"))) 
+ FILTER(lang(?label) = '' || lang(?label) = \"fr\")
+} 
+ORDER BY UCASE(?label)
+LIMIT 50""";
+  rdfs:comment "A query that will search in labels using contains function, first in the user language but will default to French."@en .
