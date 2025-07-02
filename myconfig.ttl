@@ -261,7 +261,7 @@ myd:partOf sh:path myd:partOf;
   dash:searchWidget core:ListProperty;
   datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
 
-wgs:hasGeometry sh:path _:307697226f7a4edbb27587ce08a349cd1793;
+wgs:hasGeometry sh:path _:307697226f7a4edbb27587ce08a349cd1837;
   sh:order "33";
   sh:name "hasGeometry"@en;
   sh:description "Specifies the location of the place of given section."@en;
@@ -269,10 +269,10 @@ wgs:hasGeometry sh:path _:307697226f7a4edbb27587ce08a349cd1793;
   sh:datatype geo:wktLiteral;
   dash:searchWidget core:MapProperty .
 
-_:307697226f7a4edbb27587ce08a349cd1793 rdf:first wgs:hasGeometry;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1794 .
+_:307697226f7a4edbb27587ce08a349cd1837 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1838 .
 
-_:307697226f7a4edbb27587ce08a349cd1794 rdf:first wgs:asWKT;
+_:307697226f7a4edbb27587ce08a349cd1838 rdf:first wgs:asWKT;
   rdf:rest rdf:nil .
 
 myd:isMobile sh:path myd:isMobile;
@@ -304,7 +304,7 @@ myd:place sh:path myd:place;
   dash:searchWidget core:ListProperty;
   datasources:datasource datasources:list_rdfslabel_alpha, datasources:list_rdfslabel_alpha_with_count_custom .
 
-myd:municipality_m sh:path _:307697226f7a4edbb27587ce08a349cd1795;
+myd:municipality_m sh:path _:307697226f7a4edbb27587ce08a349cd1839;
   sh:order "40";
   sh:name "municipality"@en;
   sh:description "Specifies the municipality of the given section."@en;
@@ -313,13 +313,13 @@ myd:municipality_m sh:path _:307697226f7a4edbb27587ce08a349cd1795;
   dash:searchWidget core:ListProperty;
   datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
 
-_:307697226f7a4edbb27587ce08a349cd1795 rdf:first myd:place;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1796 .
+_:307697226f7a4edbb27587ce08a349cd1839 rdf:first myd:place;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1840 .
 
-_:307697226f7a4edbb27587ce08a349cd1796 rdf:first myd:municipality;
+_:307697226f7a4edbb27587ce08a349cd1840 rdf:first myd:municipality;
   rdf:rest rdf:nil .
 
-myd:votingPlace_loc sh:path _:307697226f7a4edbb27587ce08a349cd1797;
+myd:votingPlace_loc sh:path _:307697226f7a4edbb27587ce08a349cd1841;
   sh:order "41";
   sh:name "votingPlace"@en;
   sh:description "Specifies the location of the given section."@en;
@@ -327,29 +327,29 @@ myd:votingPlace_loc sh:path _:307697226f7a4edbb27587ce08a349cd1797;
   sh:datatype geo:wktLiteral;
   dash:searchWidget core:MapProperty .
 
-_:307697226f7a4edbb27587ce08a349cd1797 rdf:first myd:votingPlace;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1798 .
+_:307697226f7a4edbb27587ce08a349cd1841 rdf:first myd:votingPlace;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1842 .
 
-_:307697226f7a4edbb27587ce08a349cd1798 rdf:first _:307697226f7a4edbb27587ce08a349cd1799;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1802 .
+_:307697226f7a4edbb27587ce08a349cd1842 rdf:first _:307697226f7a4edbb27587ce08a349cd1843;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1846 .
 
-_:307697226f7a4edbb27587ce08a349cd1799 sh:alternativePath _:307697226f7a4edbb27587ce08a349cd1800 .
+_:307697226f7a4edbb27587ce08a349cd1843 sh:alternativePath _:307697226f7a4edbb27587ce08a349cd1844 .
 
-_:307697226f7a4edbb27587ce08a349cd1800 rdf:first geo:hasGeometry;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1801 .
+_:307697226f7a4edbb27587ce08a349cd1844 rdf:first geo:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1845 .
 
-_:307697226f7a4edbb27587ce08a349cd1801 rdf:first wgs:hasGeometry;
+_:307697226f7a4edbb27587ce08a349cd1845 rdf:first wgs:hasGeometry;
   rdf:rest rdf:nil .
 
-_:307697226f7a4edbb27587ce08a349cd1802 rdf:first _:307697226f7a4edbb27587ce08a349cd1803;
+_:307697226f7a4edbb27587ce08a349cd1846 rdf:first _:307697226f7a4edbb27587ce08a349cd1847;
   rdf:rest rdf:nil .
 
-_:307697226f7a4edbb27587ce08a349cd1803 sh:alternativePath _:307697226f7a4edbb27587ce08a349cd1804 .
+_:307697226f7a4edbb27587ce08a349cd1847 sh:alternativePath _:307697226f7a4edbb27587ce08a349cd1848 .
 
-_:307697226f7a4edbb27587ce08a349cd1804 rdf:first geo:asWKT;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1805 .
+_:307697226f7a4edbb27587ce08a349cd1848 rdf:first geo:asWKT;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1849 .
 
-_:307697226f7a4edbb27587ce08a349cd1805 rdf:first wgs:asWKT;
+_:307697226f7a4edbb27587ce08a349cd1849 rdf:first wgs:asWKT;
   rdf:rest rdf:nil .
 
 myd:countMachines sh:path myd:countMachines;
@@ -376,7 +376,7 @@ myd:streetAddress sh:path myd:streetAddress;
   sh:datatype xsd:string;
   dash:searchWidget core:ListProperty .
 
-myd:hasResult sh:path _:307697226f7a4edbb27587ce08a349cd1806;
+myd:hasResult sh:path _:307697226f7a4edbb27587ce08a349cd1850;
   sh:order "45";
   sh:name "hasResult"@en;
   sh:description "Specifies the vote for the given section."@en;
@@ -385,7 +385,7 @@ myd:hasResult sh:path _:307697226f7a4edbb27587ce08a349cd1806;
   dash:searchWidget core:ListProperty;
   datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
 
-_:307697226f7a4edbb27587ce08a349cd1806 sh:inversePath myd:section .
+_:307697226f7a4edbb27587ce08a349cd1850 sh:inversePath myd:section .
 
 myd:geo_match sh:path myd:geo_match;
   sh:order "46";
@@ -440,7 +440,7 @@ myd:municipality sh:path myd:municipality;
   dash:searchWidget core:ListProperty;
   datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
 
-wgs:hasGeometry_p sh:path _:307697226f7a4edbb27587ce08a349cd1807;
+wgs:hasGeometry_p sh:path _:307697226f7a4edbb27587ce08a349cd1851;
   sh:order "60";
   sh:name "hasGeometry"@en;
   sh:description "Specifies the location of the given place."@en;
@@ -448,10 +448,10 @@ wgs:hasGeometry_p sh:path _:307697226f7a4edbb27587ce08a349cd1807;
   sh:datatype geo:wktLiteral;
   dash:searchWidget core:MapProperty .
 
-_:307697226f7a4edbb27587ce08a349cd1807 rdf:first wgs:hasGeometry;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1808 .
+_:307697226f7a4edbb27587ce08a349cd1851 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1852 .
 
-_:307697226f7a4edbb27587ce08a349cd1808 rdf:first wgs:asWKT;
+_:307697226f7a4edbb27587ce08a349cd1852 rdf:first wgs:asWKT;
   rdf:rest rdf:nil .
 
 myd:link_html sh:path myd:link_html;
@@ -551,7 +551,7 @@ myd:preference_vote sh:path myd:preference_vote;
   dash:searchWidget core:ListProperty;
   datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
 
-wgs:hasGeometry_m sh:path _:307697226f7a4edbb27587ce08a349cd1809;
+wgs:hasGeometry_m sh:path _:307697226f7a4edbb27587ce08a349cd1853;
   sh:order "79";
   sh:name "hasGeometry"@en;
   sh:description "Specifies the location of the given municipality."@en;
@@ -559,10 +559,10 @@ wgs:hasGeometry_m sh:path _:307697226f7a4edbb27587ce08a349cd1809;
   sh:datatype geo:wktLiteral;
   dash:searchWidget core:MapProperty .
 
-_:307697226f7a4edbb27587ce08a349cd1809 rdf:first wgs:hasGeometry;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1810 .
+_:307697226f7a4edbb27587ce08a349cd1853 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1854 .
 
-_:307697226f7a4edbb27587ce08a349cd1810 rdf:first wgs:asWKT;
+_:307697226f7a4edbb27587ce08a349cd1854 rdf:first wgs:asWKT;
   rdf:rest rdf:nil .
 
 myd:mir sh:path myd:mir;
@@ -583,7 +583,7 @@ myd:province sh:path myd:province;
   dash:searchWidget core:ListProperty;
   datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
 
-wgs:hasGeometry_mi sh:path _:307697226f7a4edbb27587ce08a349cd1811;
+wgs:hasGeometry_mi sh:path _:307697226f7a4edbb27587ce08a349cd1855;
   sh:order "83";
   sh:name "hasGeometry"@en;
   sh:description "Specifies the location of the given MIR."@en;
@@ -591,10 +591,10 @@ wgs:hasGeometry_mi sh:path _:307697226f7a4edbb27587ce08a349cd1811;
   sh:datatype geo:wktLiteral;
   dash:searchWidget core:MapProperty .
 
-_:307697226f7a4edbb27587ce08a349cd1811 rdf:first wgs:hasGeometry;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1812 .
+_:307697226f7a4edbb27587ce08a349cd1855 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1856 .
 
-_:307697226f7a4edbb27587ce08a349cd1812 rdf:first wgs:asWKT;
+_:307697226f7a4edbb27587ce08a349cd1856 rdf:first wgs:asWKT;
   rdf:rest rdf:nil .
 
 myd:wdid sh:path myd:wdid;
@@ -630,7 +630,7 @@ myd:district sh:path myd:district;
   dash:searchWidget core:ListProperty;
   datasources:datasource datasources:list_rdfslabel_alpha_with_count_custom .
 
-wgs:hasGeometry_vo sh:path _:307697226f7a4edbb27587ce08a349cd1813;
+wgs:hasGeometry_vo sh:path _:307697226f7a4edbb27587ce08a349cd1857;
   sh:order "95";
   sh:name "hasGeometry"@en;
   sh:description "Specifies the location of the given voting place."@en;
@@ -638,10 +638,10 @@ wgs:hasGeometry_vo sh:path _:307697226f7a4edbb27587ce08a349cd1813;
   sh:datatype geo:wktLiteral;
   dash:searchWidget core:MapProperty .
 
-_:307697226f7a4edbb27587ce08a349cd1813 rdf:first wgs:hasGeometry;
-  rdf:rest _:307697226f7a4edbb27587ce08a349cd1814 .
+_:307697226f7a4edbb27587ce08a349cd1857 rdf:first wgs:hasGeometry;
+  rdf:rest _:307697226f7a4edbb27587ce08a349cd1858 .
 
-_:307697226f7a4edbb27587ce08a349cd1814 rdf:first wgs:asWKT;
+_:307697226f7a4edbb27587ce08a349cd1858 rdf:first wgs:asWKT;
   rdf:rest rdf:nil .
 
 myd:address sh:path myd:address;
@@ -684,9 +684,9 @@ WHERE {
  ?uri a $range .
  ?uri $labelPath ?label .
  FILTER(isIRI(?uri))
- FILTER(CONTAINS(LCASE(STR(?label)), LCASE(\"$key\"))) 
+ FILTER(CONTAINS(LCASE(STR(?label)), LCASE(\"$key\")))
  FILTER(lang(?label) = '' || lang(?label) = \"fr\")
-} 
+}
 ORDER BY UCASE(?label)
 LIMIT 50""";
   rdfs:comment "A query that will search in labels using contains function, first in the user language but will default to French."@en .
