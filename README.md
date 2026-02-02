@@ -10,7 +10,7 @@ stored in **GraphDB** – a semantic graph database.
 <p align="center"><img src="assets/Picture1.png"/></p>
 
 The application connects to an **RDF** dataset hosted on an **Ontotext GraphDB** instance via a public
-**SPARQL** endpoint. The ontology and dataset focus on **Bulgarian elections** , including entities such
+**SPARQL** endpoint. The ontology and dataset focus on **Bulgarian elections**, including entities such
 as municipalities, electoral districts (MIR), polling sections, political parties, candidates, and vote
 counts across multiple years and election types. The project emphasizes ease of use, multilingual
 support, and interactive exploration of linked election data through a web-based interface.
