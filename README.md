@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The project presents a **visual search demonstrator** built using **Sparnatural** , a tool that enables
+The project presents a **visual search demonstrator** built using **Sparnatural**, a tool that enables
 intuitive **SPARQL query building** through a natural language-inspired interface. The goal of the
 project is to provide an accessible, user-friendly way to explore and analyse election-related data
 stored in **GraphDB** – a semantic graph database.
